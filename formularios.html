@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularios</title>
+</head>
+
+<body>
+    <form>
+        <label for="Nombre"> Nombre del empleado</label>
+        <input type="text" name="Nombre" id="Nombre">
+        <br><br>
+        <label for="Salario"> SalarioXHora </label>
+        <input type="number" name="Salario" id="Salario">
+        <br> <br>
+        <label for="HorasTrab"> Horas_trab </label>
+        <input type="number" name="HorasTrab" id="HorasTrab">
+        <br><br>
+        <label for="Dias"> Días </label>
+        <input type="number" name="Dias" id="Dias">
+        <br><br>
+        <button type="button" onclick="ejecutar()">presione </button>
+    </form>
+    <p id="valor">Hola</p>
+    <script>
+        function ejecutar() {
+            nombre = "";
+            salarioxhora = 0;
+            horastrab = 0;
+            dias =0;
+            salarioneto = 0;
+            total = 0;
+
+            nombre = document.getElementById("Nombre").value;
+            salarioxhora = document.getElementById("Salario").value;
+            horastrab = document.getElementById("HorasTrab").value;
+            dias = document.getElementById("Dias").value;
+
+            if (horastrab > 8) 
+            {
+                salarioneto = horastrab - 8;
+                salarioneto = (salarioneto*dias) * (salarioxhora * 2); 
+                total = ((horastrab - (horastrab - 8))*dias) * salarioxhora;
+                total = total + salarioneto;
+                total = total * 1.05;
+            } 
+            
+            if (horastrab <= 8) {
+                total = (salarioxhora * (horastrab * dias));
+            }
+
+            document.getElementById("valor").innerHTML =
+                nombre + " Tienen un salario de " + total;
+        }
+    </script>
+</body>
+</html>
